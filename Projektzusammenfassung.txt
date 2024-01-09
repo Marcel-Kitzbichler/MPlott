@@ -1,0 +1,2 @@
+Ein Cyber Pi mit einem stift soll über ein blatt papier fahren. Dabei wird mit dem Stift ein Gitter gezeichnet, wobei der stift gehoben und gesenkt wird
+um dabei eine Zeichnung entstehen zu lassen.
