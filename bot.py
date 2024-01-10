@@ -1,9 +1,23 @@
 import event, time, cyberpi, mbuild, mbot2
 import time
 
+imgBuffer =[
+    [True],
+    [False,True],
+    [False,False,True],
+    [False,False,False,True],
+    [False,False,False,False,True],
+    [False,False,False,False,False,True],
+    [False,False,False,False,False,False,True],
+    [False,False,False,False,False,False,False,True],
+    [False,False,False,False,False,False,False,False,True],
+    [False,False,False,False,False,False,False,False,False,True]
+]
+currLine = []
+
 
 def forward():
-    mbot2.servo_set(91,"all")
+    mbot2.servo_set(95,"all")
     cyberpi.broadcast("handleServo")
     mbot2.straight(10,10)
     cyberpi.stop_other()
@@ -19,18 +33,23 @@ def drawLine():
     forward()
     back()
 
+def drwImg():
+    global currLine
+    for i in imgBuffer:
+        currLine = i
+        drawLine()
+
 
 @event.start
 def main():
-    mbot2.servo_set(95,"all")
-    time.sleep(1)
-    while True:
-        drawLine()
+    drwImg()
 
 @event.receive("handleServo")
 def servoHandler():
-    while True:
-        mbot2.servo_set(88.4,"all")
+    for i in currLine:
+        if i:
+            mbot2.servo_set(88.4,"all")
+        else:
+            mbot2.servo_set(95,"all")
         time.sleep(0.2)
-        mbot2.servo_set(95,"all")
-        time.sleep(0.2)
+    mbot2.servo_set(95,"all")
