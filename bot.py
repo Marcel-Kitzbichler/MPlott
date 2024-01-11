@@ -6,7 +6,8 @@ pixelHeight = 4
 rowLength = 12
 forwardSpeed = 20
 backwardSpeed = 20
-backAngle = 3
+setAngle = 3
+resetAngle = -3
 upPos = 95
 downPos = 87.7
 #---------------------------------------------------
@@ -37,9 +38,9 @@ def forward():
 
 
 def back():
-    mbot2.turn(backAngle)
+    mbot2.turn(setAngle)
     mbot2.straight(rowLength*-1,backwardSpeed)
-    mbot2.turn(backAngle*-1)
+    mbot2.turn(resetAngle)
 
 def drawLine():
     forward()
