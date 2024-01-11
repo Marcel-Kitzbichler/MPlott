@@ -4,23 +4,26 @@ import time
 stepsPerPixel = 12
 pixelHeight = 4
 rowLength = 8
-forwardSpeed = 10
-backwardSpeed = 10
+forwardSpeed = 20
+backwardSpeed = 20
 backAngle = 3
 upPos = 95
 downPos = 88.4
 #---------------------------------------------------
 
 imgBuffer =[
-    [False,True,False,False,False,False,False,True,False],
-    [False,True,True,False,False,False,True,True,False],
-    [False,True,False,True,False,True,False,True,False],
-    [False,True,False,False,True,False,False,True,False],
-    [False,True,False,False,False,False,False,True,False],
-    [False,True,False,False,False,False,False,True,False],
-    [False,True,False,False,False,False,False,True,False],
-    [False,True,False,False,False,False,False,True,False]
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False],
+    [False,False,False,False,False,False,False,False,False,False]
 ]
+cursor = cyberpi.sprite()
 currLine = []
 
 
@@ -50,7 +53,7 @@ def drwImg():
             drawLine()
 
 
-@event.is_press('a')
+@event.is_press('b')
 def main():
     time.sleep(2)
     drwImg()
@@ -68,13 +71,60 @@ def servoHandler():
         else:
             mbot2.servo_set(upPos,"S1")
 
-@cyberpi.event.mesh_broadcast("bitmap")
-def remoteReciever():
-    cyberpi.console.println("makeblock")
-    global imgBuffer
-    imgBuffer = cyberpi.mesh_broadcast.get("bitmap")
-    main()
 
 @event.start
 def on_start():
-    cyberpi.wifi_broadcast.set_channel(6)
+    global cursor
+    cursor.draw_pixel([0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0xffffff,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000,0x000000])
+    cursor.move_to(10, 10)
+    cyberpi.screen.render()
+
+@event.is_press('right')
+def cursorRight():
+    if cursor.get_x() < 100:
+        cursor.move_x(10)
+        cyberpi.screen.render()
+
+@event.is_press('left')
+def cursorLeft():
+    if cursor.get_x() > 10:
+        cursor.move_x(-10)
+        cyberpi.screen.render()
+
+@event.is_press('up')
+def cursorUp():
+    if cursor.get_y() > 10:
+        cursor.move_y(-10)
+        cyberpi.screen.render()
+
+@event.is_press('down')
+def cursorDown():
+    if cursor.get_y() < 100:
+        cursor.move_y(10)
+        cyberpi.screen.render()
+
+@event.is_press('middle')
+def draw():
+    global imgBuffer
+    cyberpi.sketch.move_to(cursor.get_x(), cursor.get_y())
+    cyberpi.sketch.set_color(252, 3, 7)
+    cyberpi.sketch.start()
+    cyberpi.sketch.move_x(1)
+    cyberpi.sketch.end()
+    cyberpi.screen.render()
+    y = int((cursor.get_y()-10)/10)
+    x = int((cursor.get_x()-10)/10)
+    imgBuffer[y][x] = True
+
+@event.is_press('a')
+def earease():
+    global imgBuffer
+    cyberpi.sketch.move_to(cursor.get_x(), cursor.get_y())
+    cyberpi.sketch.set_color(0,0,0)
+    cyberpi.sketch.start()
+    cyberpi.sketch.move_x(1)
+    cyberpi.sketch.end()
+    cyberpi.screen.render()
+    y = int((cursor.get_y()-10)/10)
+    x = int((cursor.get_x()-10)/10)
+    imgBuffer[y][x] = False
