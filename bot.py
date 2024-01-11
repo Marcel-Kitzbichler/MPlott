@@ -64,7 +64,7 @@ def servoHandler():
     while True:
         pixel = int(mbot2.EM_get_angle("EM1")/stepsPerPixel)
         if pixel > len(currLine)-1:
-            mbot2.servo_set(upPos,"1")
+            mbot2.servo_set(upPos,"S1")
             cyberpi.stop_this()
         i = currLine[pixel]
         if i:
