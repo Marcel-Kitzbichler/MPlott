@@ -67,3 +67,14 @@ def servoHandler():
             mbot2.servo_set(downPos,"S1")
         else:
             mbot2.servo_set(upPos,"S1")
+
+@cyberpi.event.mesh_broadcast("bitmap")
+def remoteReciever():
+    cyberpi.console.println("makeblock")
+    global imgBuffer
+    imgBuffer = cyberpi.mesh_broadcast.get("bitmap")
+    main()
+
+@event.start
+def on_start():
+    cyberpi.wifi_broadcast.set_channel(6)
