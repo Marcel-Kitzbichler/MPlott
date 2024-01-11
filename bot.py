@@ -1,14 +1,14 @@
 import event, time, cyberpi, mbuild, mbot2
 import time
 #--------------------Settings-----------------------
-stepsPerPixel = 12
+stepsPerPixel = 14
 pixelHeight = 4
-rowLength = 8
+rowLength = 12
 forwardSpeed = 20
 backwardSpeed = 20
 backAngle = 3
 upPos = 95
-downPos = 88.4
+downPos = 87.7
 #---------------------------------------------------
 
 imgBuffer =[
