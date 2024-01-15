@@ -66,7 +66,7 @@ def servoHandler():
         if pixel > len(currLine)-1:
             mbot2.servo_set(upPos,"S1")
             cyberpi.stop_this()
-        i = currLine[pixel]
+        i = currLine[9 - pixel]
         if i:
             mbot2.servo_set(downPos,"S1")
         else:
