@@ -59,10 +59,7 @@ def drwImg():
 def main():
     global drawInstance
     if drawInstance:
-        cyberpi.stop_other()
-        mbot2.servo_set(upPos,"S1")
-        drawInstance = False
-        cyberpi.stop_all()
+        cyberpi.stop_this()
     drawInstance = True
     time.sleep(2)
     drwImg()
@@ -129,6 +126,12 @@ def draw():
 @event.is_press('a')
 def earease():
     global imgBuffer
+    global drawInstance
+    if drawInstance:
+        cyberpi.stop_other()
+        mbot2.servo_set(upPos,"S1")
+        drawInstance = False
+        cyberpi.stop_all()
     cyberpi.sketch.move_to(cursor.get_x(), cursor.get_y())
     cyberpi.sketch.set_color(0,0,0)
     cyberpi.sketch.start()
