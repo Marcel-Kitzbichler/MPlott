@@ -2,12 +2,12 @@ import event, time, cyberpi, mbuild, mbot2
 import time
 #--------------------Settings-----------------------
 stepsPerPixel = 14
-pixelHeight = 4
+pixelHeight = 5
 rowLength = 12
 forwardSpeed = 20
 backwardSpeed = 20
 setAngle = 3
-resetAngle = -2.8
+resetAngle = -3
 upPos = 95
 downPos = 87.7
 #---------------------------------------------------
@@ -114,7 +114,7 @@ def cursorDown():
 def draw():
     global imgBuffer
     cyberpi.sketch.move_to(cursor.get_x(), cursor.get_y())
-    cyberpi.sketch.set_color(252, 3, 7)
+    cyberpi.sketch.set_color(200, 200, 200)
     cyberpi.sketch.start()
     cyberpi.sketch.move_x(1)
     cyberpi.sketch.end()
