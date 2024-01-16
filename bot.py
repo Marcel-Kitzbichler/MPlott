@@ -26,6 +26,7 @@ imgBuffer =[
 ]
 cursor = cyberpi.sprite()
 currLine = []
+drawInstance = False
 
 
 def forward():
@@ -56,8 +57,15 @@ def drwImg():
 
 @event.is_press('b')
 def main():
+    if drawInstance:
+        cyberpi.stop_other()
+        mbot2.servo_set(upPos,"S1")
+        drawInstance = False
+        cyberpi.stop_all()
+    drawInstance = True
     time.sleep(2)
     drwImg()
+    drawInstance = False
 
 @event.receive("handleServo")
 def servoHandler():
