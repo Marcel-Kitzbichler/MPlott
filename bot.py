@@ -57,6 +57,7 @@ def drwImg():
 
 @event.is_press('b')
 def main():
+    global drawInstance
     if drawInstance:
         cyberpi.stop_other()
         mbot2.servo_set(upPos,"S1")
