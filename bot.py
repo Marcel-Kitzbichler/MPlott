@@ -2,12 +2,12 @@ import event, time, cyberpi, mbuild, mbot2
 import time
 #--------------------Settings-----------------------
 stepsPerPixel = 14
-pixelHeight = 5
+pixelHeight = 3
 rowLength = 12
-forwardSpeed = 20
-backwardSpeed = 20
-setAngle = 3
-resetAngle = -3
+forwardSpeed = 10
+backwardSpeed = 10
+setAngle = 4
+resetAngle = -3.8
 upPos = 95
 downPos = 87.7
 #---------------------------------------------------
