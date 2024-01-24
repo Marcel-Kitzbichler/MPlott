@@ -89,7 +89,6 @@ def servoHandler():
         else:
             mbot2.servo_set(upPos,"S1")
 
-
 @event.start
 def on_start():
     global cursor
