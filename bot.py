@@ -49,10 +49,21 @@ def drawLine():
 
 def drwImg():
     global currLine
+    lineNumb = 0
     for i in imgBuffer:
         currLine = i
+        drawPerc(lineNumb)
         for a in range(pixelHeight):
             drawLine()
+        lineNumb += 1
+
+def drawPerc(perc):
+    percStr = str(perc * 10)
+    text = cyberpi.sprite()
+    text.move_to(64, 64)
+    text.draw_text(percStr + "%")
+    cyberpi.screen.render()
+    text.delete()
 
 
 @event.is_press('b')
