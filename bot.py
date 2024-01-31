@@ -123,12 +123,7 @@ def cursorDown():
 @event.is_press('middle')
 def draw():
     global imgBuffer
-    cyberpi.sketch.move_to(cursor.get_x(), cursor.get_y())
-    cyberpi.sketch.set_color(200, 200, 200)
-    cyberpi.sketch.start()
-    cyberpi.sketch.move_x(1)
-    cyberpi.sketch.end()
-    cyberpi.screen.render()
+    renderAtCursor(200)
     y = int((cursor.get_y()-10)/10)
     x = int((cursor.get_x()-10)/10)
     imgBuffer[y][x] = True
@@ -142,12 +137,15 @@ def earease():
         mbot2.servo_set(upPos,"S1")
         drawInstance = False
         cyberpi.stop_all()
+    renderAtCursor(0)
+    y = int((cursor.get_y()-10)/10)
+    x = int((cursor.get_x()-10)/10)
+    imgBuffer[y][x] = False
+
+def renderAtCursor(brightness):
     cyberpi.sketch.move_to(cursor.get_x(), cursor.get_y())
-    cyberpi.sketch.set_color(0,0,0)
+    cyberpi.sketch.set_color(brightness,brightness,brightness)
     cyberpi.sketch.start()
     cyberpi.sketch.move_x(1)
     cyberpi.sketch.end()
     cyberpi.screen.render()
-    y = int((cursor.get_y()-10)/10)
-    x = int((cursor.get_x()-10)/10)
-    imgBuffer[y][x] = False
