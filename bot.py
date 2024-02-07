@@ -6,7 +6,7 @@ pixelHeight = 3
 rowLength = 12
 forwardSpeed = 10
 backwardSpeed = 10
-setAngle = -4
+setAngle = -3.5
 upPos = 95
 downPos = 87.7
 #---------------------------------------------------
@@ -45,10 +45,10 @@ def forward(servo):
     
     if (mbuild.quad_rgb_sensor.is_color("white","L2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1)):
       while ((mbuild.quad_rgb_sensor.is_color("white","L2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
-        mbot2.turn(4)
+        mbot2.turn(3.5)
     else:
       while ((mbuild.quad_rgb_sensor.is_color("white","R2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
-        mbot2.turn(-4)
+        mbot2.turn(-3.5)
 
 
 def back():
