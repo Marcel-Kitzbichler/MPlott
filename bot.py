@@ -6,8 +6,7 @@ pixelHeight = 3
 rowLength = 12
 forwardSpeed = 10
 backwardSpeed = 10
-setAngle = 4
-resetAngle = -3.7
+setAngle = -4
 upPos = 95
 downPos = 87.7
 #---------------------------------------------------
@@ -29,22 +28,31 @@ currLine = []
 drawInstance = False
 
 
-def forward():
+def forward(servo):
+    mbot2.turn(setAngle)
     mbot2.EM_reset_angle("EM1")
     mbot2.servo_set(upPos,"S1")
-    cyberpi.broadcast("handleServo")
-    mbot2.straight(rowLength,forwardSpeed)
+    if servo:
+        cyberpi.broadcast("handleServo")
+    mbot2.forward(10)
+    while ((mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
+      pass
+    mbot2.EM_stop("ALL")
+    if (mbuild.quad_rgb_sensor.is_color("white","L2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1)):
+      while ((mbuild.quad_rgb_sensor.is_color("white","L2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
+        mbot2.turn(4)
+    else:
+      while ((mbuild.quad_rgb_sensor.is_color("white","R2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
+        mbot2.turn(-4)
     cyberpi.stop_other()
     mbot2.servo_set(upPos,"S1")
 
 
 def back():
-    mbot2.turn(setAngle)
     mbot2.straight(rowLength*-1,backwardSpeed)
-    mbot2.turn(resetAngle)
 
 def drawLine():
-    forward()
+    forward(True)
     back()
 
 def drwImg():
@@ -73,6 +81,7 @@ def main():
         cyberpi.stop_this()
     drawInstance = True
     time.sleep(2)
+    forward(False)
     drwImg()
     drawInstance = False
 
