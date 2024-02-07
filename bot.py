@@ -35,17 +35,20 @@ def forward(servo):
     if servo:
         cyberpi.broadcast("handleServo")
     mbot2.forward(10)
+
     while ((mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
       pass
     mbot2.EM_stop("ALL")
+
+    cyberpi.stop_other()
+    mbot2.servo_set(upPos,"S1")
+    
     if (mbuild.quad_rgb_sensor.is_color("white","L2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1)):
       while ((mbuild.quad_rgb_sensor.is_color("white","L2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
         mbot2.turn(4)
     else:
       while ((mbuild.quad_rgb_sensor.is_color("white","R2",1)) or (mbuild.quad_rgb_sensor.is_color("white","R2",1)) and (mbuild.quad_rgb_sensor.is_color("white","L2",1))):
         mbot2.turn(-4)
-    cyberpi.stop_other()
-    mbot2.servo_set(upPos,"S1")
 
 
 def back():
