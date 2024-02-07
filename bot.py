@@ -7,7 +7,7 @@ rowLength = 12
 forwardSpeed = 10
 backwardSpeed = 10
 setAngle = 4
-resetAngle = -3.8
+resetAngle = -3.7
 upPos = 95
 downPos = 87.7
 #---------------------------------------------------
