@@ -146,6 +146,7 @@ def earease():
     global drawInstance
     if drawInstance:
         cyberpi.stop_other()
+        mbot2.EM_stop("ALL")
         mbot2.servo_set(upPos,"S1")
         drawInstance = False
         cyberpi.stop_all()
