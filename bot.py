@@ -3,7 +3,7 @@ import time
 #--------------------Settings-----------------------
 stepsPerPixel = 14
 pixelHeight = 3
-rowLength = 12
+rowLength = 14
 forwardSpeed = 10
 backwardSpeed = 10
 setAngle = -3.5
